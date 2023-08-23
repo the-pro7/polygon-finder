@@ -1,0 +1,107 @@
+// Import config partial
+@import "./config";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+// General
+button {
+    cursor: pointer;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-family: family(poppins);
+
+    .sub {
+        color: $primary-color;
+        font-family: family(dancer);
+        font-size: 3rem;
+    }
+}
+
+// The actual container
+.polygon-container {
+    border-radius: 1rem;
+    padding: 1em;
+    width: 80%;
+    max-width: 550px;
+    font-family: family(poppins);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    box-shadow: 3px 4px 25px rgb(0 0 0 / .3);
+
+    &__polygon {
+        font-size: 1.1rem;
+        margin-bottom: 1.5em;
+
+        .polygon-name {
+            color: $primary-color;
+            font-weight: weights(bold);
+        }
+    }
+
+    // Inputs container
+    &__inputs {
+        display: grid;
+        grid-template-columns: 100px auto;
+        gap: 1em;
+        padding-inline: .2em;
+        // grid-auto-flow: dense;
+
+        > * {
+            padding: 1em .5em;
+            border-radius: .5rem;
+            background-color: transparent;
+            border: 2px solid $primary-color;
+            font-family: family(poppins);
+
+            & :is(:focus, :active) {
+                outline-color: transparent;
+            }
+        }
+    }
+
+    // Button
+    &__cta {
+        padding: .7em 0;
+        width: 50%;
+        margin: 0 auto;
+        border: none;
+        background: $primary-color;
+        color: #fff;
+        font-weight: weights(bold);
+        border-radius: .5rem;
+        font-family: family(poppins);
+        font-size: 1rem;
+        transition: all 300ms ease;
+
+        &:hover {
+            background-color: lighten($primary-color, 10%);
+        }
+    }
+
+    .results {
+        margin-top: -2em;
+        opacity: 0;
+        transition: all 300ms ease;
+    }
+
+    .results.ready {
+        margin-top: revert;
+        opacity: 1;
+    }
+}

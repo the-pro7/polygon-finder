@@ -1,0 +1,25 @@
+// Fonts from Google
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@300;700&display=swap");
+$primary-color: #e0486c;
+
+$font-weights: (
+  "light": 300,
+  "regular": 400,
+  "bold": 700,
+);
+
+// Function for weights
+@function weights($weight) {
+  @return map-get($font-weights, $weight);
+}
+
+// Function for typeface
+@function family($name) {
+    @if $name == "dancer" {
+        @return 'Dancing Script', cursive;
+    } @else if $name == "poppins" {
+        @return 'Poppins', sans-serif;
+    } @else {
+        @return sans-serif;
+    }
+}

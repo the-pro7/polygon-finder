@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@300;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-family: "Poppins", sans-serif;
+}
+.title .sub {
+  color: #e0486c;
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+}
+
+.polygon-container {
+  border-radius: 1rem;
+  padding: 1em;
+  width: 80%;
+  max-width: 550px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  box-shadow: 3px 4px 25px rgba(0, 0, 0, 0.3);
+}
+.polygon-container__polygon {
+  font-size: 1.1rem;
+  margin-bottom: 1.5em;
+}
+.polygon-container__polygon .polygon-name {
+  color: #e0486c;
+  font-weight: 700;
+}
+.polygon-container__inputs {
+  display: grid;
+  grid-template-columns: 100px auto;
+  gap: 1em;
+  padding-inline: 0.2em;
+}
+.polygon-container__inputs > * {
+  padding: 1em 0.5em;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  border: 2px solid #e0486c;
+  font-family: "Poppins", sans-serif;
+}
+.polygon-container__inputs > * :is(:focus, :active) {
+  outline-color: transparent;
+}
+.polygon-container__cta {
+  padding: 0.7em 0;
+  width: 50%;
+  margin: 0 auto;
+  border: none;
+  background: #e0486c;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  transition: all 300ms ease;
+}
+.polygon-container__cta:hover {
+  background-color: #e7748f;
+}
+.polygon-container .results {
+  margin-top: -2em;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+.polygon-container .results.ready {
+  margin-top: revert;
+  opacity: 1;
+}/*# sourceMappingURL=styles.css.map */
