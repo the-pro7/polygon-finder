@@ -1,2 +1,2 @@
 # polygon-finder
-An OOP bases program for calculating polygon related stuff.
+An OOP-based program for calculating polygon-related stuff.
