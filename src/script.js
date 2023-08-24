@@ -11,11 +11,13 @@ let sidesOfPolygon = polygonSides.value;
 class Actions {
   constructor(sides) {
     this.sides = sides;
-    this.actionToPerform = null;
-    this.polygon = "";
+    this.actionToPerform = this.getActions();
+    this.getInteriorAngle = this.getInteriorAngle();
+    this.polygon = this.returnName();
+    this.result = null;
   }
 
-  getSides() {
+  returnName() {
     switch (this.sides) {
       case 3:
         return (this.polygon = "triangle");
@@ -43,19 +45,31 @@ class Actions {
   }
 
   getActions() {
-    const actions = actionToPerform;
-   return actions.addEventListener("change", (e) => {
+    let operand = null; // Default value
+
+    actionToPerform.addEventListener("change", (e) => {
       let actionType = e.target.options[e.target.selectedIndex];
       let actionTypeValue = actionType.value;
+      operand = actionTypeValue;
+
+      console.log(operand);
     });
 
+    return operand;
   }
 
-  static add() {
-    return "hello world";
+  getInteriorAngle() {
+    return this.sides > 2 && this.actionToPerform === "size-of-interior-angle"
+      ? (this.result = Math.round((this.sides - 2 * 180) / this.sides))
+      : "?";
   }
 }
 
 let action = new Actions(10, "null");
 
-console.log(action.getActions());
+console.log(action.result);
+
+calculate.addEventListener("click", () => {
+  action = new Actions(polygonSides)
+  console.log(action.result)
+})
