@@ -1,75 +1,82 @@
 const polygonContainer = document.querySelector(".polygon-container");
+const polygonSides = polygonContainer.querySelector('[type="number"]');
+const computations = polygonContainer.querySelector(".computations");
+const calculate = polygonContainer.querySelector('[type="button"]');
 const polygonName = polygonContainer.querySelector(".polygon-name");
-const polygonSides = polygonContainer.querySelector('[name="polygon-sides"]');
-const actionToPerform = polygonContainer.querySelector(
-  ".polygon-container__inputs-select"
-);
-const calculate = document.querySelector('[type="button"]');
 
-let sidesOfPolygon = polygonSides.value;
+console.log(computations);
+const messages = computations.querySelectorAll("p");
 
-class Actions {
+const round = (num) => {
+  return Math.round((num * 1000) / 1000);
+};
+
+const availablePolygons = {
+  3: "triangle",
+  4: "square/rectangle",
+  5: "pentagon",
+  6: "hexagon",
+  7: "heptagon",
+  8: "octagon",
+  9: "nonagon",
+  10: "decagon",
+  11: "undecagon",
+  12: "duodecagon",
+};
+
+class configurePolygon {
   constructor(sides) {
     this.sides = sides;
-    this.actionToPerform = this.getActions();
-    this.getInteriorAngle = this.getInteriorAngle();
-    this.polygon = this.returnName();
-    this.result = null;
+    this.sumOfInteriorAngles = this.sumOfInteriorAngles();
+    this.sizeOfInteriorAngle = this.sizeOfInteriorAngle();
+    this.sizeOfExteriorAngle = this.sizeOfExteriorAngle();
+    this.polygonName = this.polygonName();
   }
 
-  returnName() {
-    switch (this.sides) {
-      case 3:
-        return (this.polygon = "triangle");
-      case 4:
-        return (this.polygon = "square");
-      case 5:
-        return (this.polygon = "pentagon");
-      case 6:
-        return (this.polygon = "hexagon");
-      case 7:
-        return (this.polygon = "heptagon");
-      case 8:
-        return (this.polygon = "octagon");
-      case 9:
-        return (this.polygon = "nonagon");
-      case 10:
-        return (this.polygon = "decagon");
-      case 11:
-        return (this.polygon = "undecagon");
-      case 12:
-        return (this.polygon = "duodecagon");
-      default:
-        return (this.polygon = "");
-    }
+  sumOfInteriorAngles() {
+    return this.sides > 2 ? round((this.sides - 2) * 180) : "bad";
   }
 
-  getActions() {
-    let operand = null; // Default value
+  sizeOfInteriorAngle() {
+    return this.sides > 2
+      ? round(((this.sides - 2) * 180) / this.sides)
+      : "worse";
+  }
 
-    actionToPerform.addEventListener("change", (e) => {
-      let actionType = e.target.options[e.target.selectedIndex];
-      let actionTypeValue = actionType.value;
-      operand = actionTypeValue;
+  sizeOfExteriorAngle() {
+    return this.sides > 2 ? round(360 / this.sides) : "worst";
+  }
 
-      console.log(operand);
+  polygonName() {
+    return this.sides > 2 && this.sides <= 12
+      ? availablePolygons[this.sides]
+      : "none";
+  }
+
+  showComputatations() {
+    messages.forEach((message) => {
+      let messageHolders = message.querySelectorAll("span");
+      messageHolders.forEach((holder) => {
+        if (holder.classList.contains("sum-interior")) {
+          holder.textContent = this.sumOfInteriorAngles;
+        } else if (holder.classList.contains("size-interior")) {
+          holder.textContent = this.sizeOfInteriorAngle;
+        } else {
+          holder.textContent = this.sizeOfExteriorAngle;
+        }
+      });
     });
 
-    return operand;
-  }
-
-  getInteriorAngle() {
-    return this.sides > 2 && this.actionToPerform === "size-of-interior-angle"
-      ? (this.result = Math.round((this.sides - 2 * 180) / this.sides))
-      : "?";
+    polygonName.textContent = this.polygonName.toUpperCase();
   }
 }
 
-let action = new Actions(10, "null");
+console.log(round(57.55)); // Thanks to @beanythecoder for this!!
 
-console.log(action.result);
+let configure = new configurePolygon(polygonSides.value);
 
 calculate.addEventListener("click", () => {
-  action = new Actions(polygonSides)
-  console.log(action.result)
-})
+  configure = new configurePolygon(polygonSides.value);
+  console.log(configure.sides);
+  configure.showComputatations();
+});

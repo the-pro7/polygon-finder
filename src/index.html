@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/styles.css" />
-    <title>Ploygon Finder</title>
+    <title>Polygon Finder</title>
   </head>
   <body>
     <h1 class="title">Polygon <span class="sub">Finder</span></h1>
@@ -13,24 +13,25 @@
         Name of polygon: <span class="polygon-name">none</span>
       </p>
       <div class="polygon-container__inputs">
-        <input type="number" name="polygon-sides" id="sides" placeholder="No. of sides"/>
-        <select
-          name="action"
-          id="action"
-          class="polygon-container__inputs-select"
-        >
-          <option selected disabled value="">What to find...</option>
-          <option value="sum-of-interior-angles">Sum of interior angles</option>
-          <option value="size-of-interior-angle">
-            Size of an interior angle
-          </option>
-          <option value="size-of-exterior-angles">
-            Size of exterior angle
-          </option>
-        </select>
+        <input type="number" name="polygon-sides" id="sides" placeholder="No. of sides of polygon"/>
+        <!--  -->
+      </div>
+      <div class="computations">
+        <p class="sum-of-interior-angles">
+          Sum of interior angles: 
+          <span class="sum-interior">none</span>
+        </p>
+        <p class="interior-angle">
+          Size of an interior angle: 
+          <span class="size-interior">none</span>
+        </p>
+        <p class="exterior-angles">
+          Size of exterior angles: 
+          <span class="size-exterior">none</span>
+        </p>
       </div>
       <button class="polygon-container__cta" type="button">Calculate</button>
-      <p class="results">Sum of interior angles: 50</p>
+      <!-- <p class="results">Sum of interior angles: 50</p> -->
     </div>
     <script src="script.js" defer></script>
   </body>

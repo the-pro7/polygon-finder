@@ -49,7 +49,6 @@ button {
 }
 .polygon-container__inputs {
   display: grid;
-  grid-template-columns: 100px auto;
   gap: 1em;
   padding-inline: 0.2em;
 }
@@ -59,12 +58,13 @@ button {
   background-color: transparent;
   border: 2px solid #e0486c;
   font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
 }
 .polygon-container__inputs > * :is(:focus, :active) {
   outline-color: transparent;
 }
 .polygon-container__cta {
-  padding: 0.7em 0;
+  padding: 1em 0;
   width: 50%;
   margin: 0 auto;
   border: none;
@@ -79,12 +79,15 @@ button {
 .polygon-container__cta:hover {
   background-color: #e7748f;
 }
-.polygon-container .results {
-  margin-top: -2em;
-  opacity: 0;
-  transition: all 300ms ease;
+.polygon-container .computations {
+  padding: 0.5em;
+  border-radius: 0.5rem;
+  background-color: rgba(227, 226, 226, 0.452);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
-.polygon-container .results.ready {
-  margin-top: revert;
-  opacity: 1;
+.polygon-container .computations p span {
+  font-weight: 700;
+  color: #e0486c;
 }/*# sourceMappingURL=styles.css.map */
